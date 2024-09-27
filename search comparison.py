@@ -1,17 +1,21 @@
 
 
 import time
-
+import random
 
 
 print ("This program times how long it takes to search for data in an array")
 theArray = []
 
 #Create the array of ints
-def createArray (numItems):
+def createArray (numItems, r):
     global theArray
     for counter in range (0, numItems):
-        theArray.append(counter)
+            theArray.append(counter)   #fill array
+
+    if r == 0: #array is random, so shuffle it
+            random.shuffle(theArray)
+
     return
 
 #Print the array - caution if large array!
@@ -31,8 +35,10 @@ def searchArray(searchItem):
 
 #Main program
 num = int (input("How many items in the array? "))
+r = int(input("Should the array be random or sorted? (0, 1)?"))
 
-createArray(num)
+
+createArray(num, r)
 #printArray()
 
 searchItem = int(input("what number to search for? "))
