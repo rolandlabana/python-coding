@@ -59,38 +59,48 @@ def searchArray(searchItem):
 ##################################
 print ("This program times how long it takes to search for data in an array")
 
+#Get the parameters to run on
 num = int (input("How many items in the array? "))
 sortedArray = int(input("Should the array be random or sorted? (0, 1)?"))
 
-createArray(num, sortedArray)
-#printArray() - just for debugging on small array sizes
-
 searchItem = int(input("what number to search for? "))
 
-#start timer
-start = time.time()
-fnd, numCompares = searchArray(searchItem)
-end = time.time()
-#stop timer
+simulateNumber = int(input("How many runs to simulate? "))
 
-if sortedArray == True:    #The array is sorted so we can do a binay search on it
-    startBinary = time.time()
-    fndB, numComparesBinary  = searchArrayBinary(searchItem)
-    endBinary = time.time()
+for currentIteration in range (1, simulateNumber+1):
+    #Create the array and then run with the input parameters
+    createArray(num, sortedArray)
+    #printArray() - just for debugging on small array sizes
 
-#print results of search(es)
-if not fnd:
-    print ("Item was not found!")
-else:
-    print ("Time taken: ",end-start, " Num compares: ", numCompares)
-    
-if sortedArray == True: #print result of binary search on the sorted array
-    if not fndB:
-         print ("Binary Search - Item was not found!")
+    #start timer
+    start = time.time()
+    fnd, numCompares = searchArray(searchItem)
+    end = time.time()
+    #stop timer
+
+    if sortedArray == True:    #The array is sorted so we can do a binay search on it
+        startBinary = time.time()
+        fndB, numComparesBinary  = searchArrayBinary(searchItem)
+        endBinary = time.time()
+
+    #print results of search(es)
+    print ("\n****************")
+    print ("Iteration:  ", currentIteration)
+    print ("****************")
+    if not fnd:
+        print ("Item was not found!")
     else:
-        print ("Binary Search Time taken: ",endBinary-startBinary, " Num compares: ", numComparesBinary)
+        print ("Time taken: ",end-start, " Num compares: ", numCompares)
+        
+    if sortedArray == True: #print result of binary search on the sorted array
+        if not fndB:
+            print ("Binary Search - Item was not found!")
+        else:
+            print ("Binary Search Time taken: ",endBinary-startBinary, " Num compares: ", numComparesBinary)
 
-
+    #empty the array before creating a new one for the next run
+    theArray.clear()
+#end of for currentIteration loop
 
 
 
