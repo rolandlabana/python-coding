@@ -57,6 +57,9 @@ def searchArray(searchItem):
 ##################################
 #          Main program
 ##################################
+
+avgCompares = avgTime = TotalCompares = totalTime = avgComparesBinary =  avgTimeBinary = TotalComparesBinary = totalTimeBinary =0
+
 print ("This program times how long it takes to search for data in an array")
 
 #Get the parameters to run on
@@ -78,10 +81,23 @@ for currentIteration in range (1, simulateNumber+1):
     end = time.time()
     #stop timer
 
+    TotalCompares = TotalCompares + numCompares
+    avgCompares = TotalCompares/currentIteration
+    timeTaken = end-start
+    totalTime = totalTime + timeTaken
+    avgTime = totalTime / currentIteration
+    
+
     if sortedArray == True:    #The array is sorted so we can do a binay search on it
         startBinary = time.time()
         fndB, numComparesBinary  = searchArrayBinary(searchItem)
         endBinary = time.time()
+
+        TotalComparesBinary = TotalComparesBinary + numComparesBinary
+        avgComparesBinary = TotalComparesBinary/currentIteration
+        timeTakenBinary = endBinary-startBinary
+        totalTimeBinary = totalTimeBinary + timeTakenBinary
+        avgTimeBinary = totalTimeBinary / currentIteration
 
     #print results of search(es)
     print ("\n****************")
@@ -90,17 +106,25 @@ for currentIteration in range (1, simulateNumber+1):
     if not fnd:
         print ("Item was not found!")
     else:
-        print ("Time taken: ",end-start, " Num compares: ", numCompares)
+        print ("Time taken: ",timeTaken, " Num compares: ", numCompares)
+        print ("    Avgs: Time:",  avgTime, "    Compares",avgCompares)
         
     if sortedArray == True: #print result of binary search on the sorted array
         if not fndB:
             print ("Binary Search - Item was not found!")
         else:
-            print ("Binary Search Time taken: ",endBinary-startBinary, " Num compares: ", numComparesBinary)
+            print ("Binary Search Time taken: ",timeTakenBinary, " Num compares: ", numComparesBinary)
+            print ("    Avgs Binary: Time:",  avgTimeBinary, "    Compares",avgComparesBinary)
 
     #empty the array before creating a new one for the next run
     theArray.clear()
 #end of for currentIteration loop
+
+print("\n**********************")
+print ("Averages of all runs")
+print("**********************")
+print ("Avg time: ", avgTime, " Avg Compares: ", avgCompares)
+print ("Avg time Binary Search: ", avgTimeBinary, " Avg Compares: ", avgComparesBinary)
 
 
 
