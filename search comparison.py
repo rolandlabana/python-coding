@@ -4,7 +4,6 @@ import time
 import random
 
 
-print ("This program times how long it takes to search for data in an array")
 theArray = []
 
 #Create the array of ints
@@ -50,12 +49,17 @@ def searchArray(searchItem):
         
     return (False) #if we reach here, the item was not found
 
-#Main program
+
+##################################
+#          Main program
+##################################
+print ("This program times how long it takes to search for data in an array")
+
 num = int (input("How many items in the array? "))
-r = int(input("Should the array be random or sorted? (0, 1)?"))
+sortedArray = int(input("Should the array be random or sorted? (0, 1)?"))
 
 
-createArray(num, r)
+createArray(num, sortedArray)
 #printArray()
 
 searchItem = int(input("what number to search for? "))
@@ -66,17 +70,18 @@ fnd = searchArray(searchItem)
 end = time.time()
 #stop timer
 
-if r == 1:    #The array is sorted so we can do a binay search on it
+if sortedArray == True:    #The array is sorted so we can do a binay search on it
     startBinary = time.time()
     fndB = searchArrayBinary(searchItem)
     endBinary = time.time()
 
+#print results of search(es)
 if not fnd:
     print ("Item was not found!")
 else:
     print ("Time taken: ",end-start)
     
-if r ==1: #print result of binary search on the sorted array
+if sortedArray == True: #print result of binary search on the sorted array
     if not fndB:
          print ("Binary Search - Item was not found!")
     else:
