@@ -3,11 +3,11 @@
 # Currently, the program has to be run twice if you want to compare
 # a sorted list vs. an unsorted list. 
 # Consider adding a three way comparison in the same run:
-#    1. Unsorted list
-#    2. Sorted list
+#    1. Unsorted list - linear search
+#    2. Sorted list - linear search with exit upon success
 #    3. Sorted list with binary search
 # But a consideration is if the user should enter the 
-# target seacrh value of if it should be chosen randomly
+# target search value of if it should be chosen randomly
 # A good solution might be to allow the user to enter
 # a value or choose to have the target chosen randomly.
 # Allowing the user to enter a value allows for comparison
