@@ -27,9 +27,20 @@ def printArray():
 
 #Search for an item in the array using binary search
 def searchArrayBinary(searchItem):
-     #todo - implement binary search here
-     pass
-     return (False)
+    left = 0
+    right = len(theArray) - 1
+
+    while left <= right:
+        mid = left + (right - left) // 2  # Prevents overflow for large arrays
+        if theArray[mid] == searchItem:
+            return mid  # Target found
+        elif theArray[mid] < searchItem:
+            left = mid + 1  # Search right half
+        else:
+            right = mid - 1  # Search left half
+
+    return (False)  # Target not found
+
 
 #Search for an item in the array
 def searchArray(searchItem):
@@ -55,16 +66,21 @@ fnd = searchArray(searchItem)
 end = time.time()
 #stop timer
 
-#todo - implement binary search on the array too if it's sorted
-#startBinary = time.time()
-#searchArrayBinay(searchItem)
-#endBinary = time.time()
+if r == 1:    #The array is sorted so we can do a binay search on it
+    startBinary = time.time()
+    fndB = searchArrayBinary(searchItem)
+    endBinary = time.time()
 
 if not fnd:
     print ("Item was not found!")
 else:
     print ("Time taken: ",end-start)
-    #todo - print binary search time taken if used
+    
+if r ==1: #print result of binary search on the sorted array
+    if not fndB:
+         print ("Binary Search - Item was not found!")
+    else:
+        print ("Binary Search Time taken: ",endBinary-startBinary)
 
 
 
