@@ -1,8 +1,20 @@
-
+# This progam compares search algorithms on an array.
+# The user is prompted for various inputs
+# Currently, the program has to be run twice if you want to compare
+# a sorted list vs. an unsorted list. 
+# Consider adding a three way comparison in the same run:
+#    1. Unsorted list
+#    2. Sorted list
+#    3. Sorted list with binary search
+# But a consideration is if the user should enter the 
+# target seacrh value of if it should be chosen randomly
+# A good solution might be to allow the user to enter
+# a value or choose to have the target chosen randomly.
+# Allowing the user to enter a value allows for comparison
+# of best, worst, mid cases.
 
 import time
 import random
-
 
 theArray = []
 
