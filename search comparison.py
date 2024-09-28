@@ -31,10 +31,10 @@ def searchArrayBinary(searchItem):
     numCompares = 0
 
     while left <= right:
-        mid = left + (right - left) // 2  # Prevents overflow for large arrays
+        mid = (right - left) // 2 
         numCompares = numCompares + 1
         if theArray[mid] == searchItem:
-            return (True, numCompares)  # Target found
+            return (True, numCompares)  # item found
         elif theArray[mid] < searchItem:
             left = mid + 1  # Search right half
         else:
